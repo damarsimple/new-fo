@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Streaming</title>
+  </head>
+  <body>
+    <h1>Video Streaming with Flask</h1>
+    <img id="imgs" src="http://127.0.0.1:8080/video_feed">
+
+    <p>Size: <span id="size"></span></p>
+    <script>
+        // count the size bytes of the image evey 1 second
+
+        
+        setInterval(function() {
+            var img = document.getElementById('imgs');
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+            context.drawImage(img, 0, 0 );
+            var data = canvas.toDataURL('image/jpeg');
+            var size = data.length;
+            // in kb
+            document.getElementById('size').innerHTML =  (size/1024).toFixed(2) + ' KB';
+        }, 1000);
+
+
+    </script>
+  </body>
+</html>

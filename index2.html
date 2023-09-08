@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Streaming</title>
+  </head>
+  <body>
+    <canvas id="videoCanvas" width="640" height="480"></canvas>
+
+    <p id="size">Size : </p>
+    <script>
+      var canvas = document.getElementById('videoCanvas');
+      var context = canvas.getContext('2d');
+      setInterval(function() {
+        console.log('called')
+        const imageUrl = "http://127.0.0.1:8080/video_feed"
+        const img = new Image();
+        img.src = imageUrl;
+        context.drawImage(
+            img
+        , 0, 0, canvas.width, canvas.height);
+
+      }, 1000/30); // assuming 30 fps
+    </script>
+  </body>
+</html>
